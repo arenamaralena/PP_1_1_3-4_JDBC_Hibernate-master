@@ -6,10 +6,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Properties;
 
 public class Util {
@@ -39,21 +35,5 @@ public class Util {
 
     public static SessionFactory getSession() {
         return sessionFactory;
-    }
-
-    public Connection getConnection() {
-        Connection connection = null;
-        try {
-            Driver driver = new com.mysql.cj.jdbc.Driver();
-            DriverManager.deregisterDriver(driver);
-        } catch (SQLException e) {
-            System.err.println("Не получилось загрузить класс драйвера.");
-        }
-        try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (SQLException e) {
-            System.err.println("Не произошла работа коннекшена.");
-        }
-        return connection;
     }
 }
