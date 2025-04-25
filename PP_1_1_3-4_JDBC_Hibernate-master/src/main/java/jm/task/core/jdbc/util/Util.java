@@ -28,7 +28,6 @@ public class Util {
             settings.put("hibernate.connection.username", USERNAME);
             settings.put("hibernate.connection.password", PASSWORD);
             settings.put("hibernate.hbm2ddl.auto", "none");
-
             configuration.setProperties(settings);
             configuration.addAnnotatedClass(User.class);
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
